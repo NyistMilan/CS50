@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            let input = "";
+
+            document.addEventListener("DOMContentLoaded", function (event) {
+                const buttons = document.querySelectorAll(".button");
+                buttons.forEach((button) => {
+                button.addEventListener("click", onClickEvent);
+                });
+
+                const checker = document.querySelector(".checker");
+                input = document.querySelector("input");
+                checker.onclick = () => checkInput();
+            });
+
+            function onClickEvent() {
+                resetButtons();
+                if (event.target.id == "correct") {
+                event.target.classList.add("correct");
+                addHTMLText(true, "firstResponse");
+                } else {
+                event.target.classList.add("incorrect");
+                addHTMLText(false, "firstResponse");
+                }
+            }
+
+            function resetButtons() {
+                const buttons = document.querySelectorAll(".button");
+                buttons.forEach((button) => {
+                button.classList.remove("incorrect");
+                button.classList.remove("correct");
+                });
+            }
+
+            function addHTMLText(truthValue, id) {
+                if (truthValue) {
+                document.getElementById(id).textContent = "Correct!";
+                } else {
+                document.getElementById(id).textContent = "Incorrect";
+                }
+            }
+
+            function checkInput() {
+                resetInput();
+                if (input.value.toLowerCase() === "switzerland") {
+                input.classList.add("correct");
+                addHTMLText(true, "secondResponse");
+                } else {
+                input.classList.add("incorrect");
+                addHTMLText(false, "secondResponse");
+                }
+            }
+
+            function resetInput() {
+                input.classList.remove("incorrect");
+                input.classList.remove("correct");
+            }
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <h3>What is the approximate ratio of people to sheep in New Zealand?</h3>
+                <h2 id="firstResponse"></h2>
+                <button id="correct" class="button">6 people per 1 sheep</button>
+                <button class="button">3 people per 1 sheep</button>
+                <button class="button">1 person per 1 sheep</button>
+                <button class="button">1 person per 3 sheep</button>
+                <button class="button">1 person per 6 sheep</button>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <h3>
+                In which country is it illegal to own only one guinea pig, as a lone
+                guinea pig might get lonely?
+                </h3>
+                <h2 id="secondResponse"></h2>
+                <input type="text" />
+                <button class="checker">Check Answer</button>
+            </div>
+        </div>
+    </body>
+</html>

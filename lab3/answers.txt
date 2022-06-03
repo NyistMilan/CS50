@@ -1,0 +1,11 @@
+sort1 uses: bubble sort
+
+How do you know?: We know that the worst case of the bubble sort is the reversed list, and that is where it did the slowest job.
+
+sort2 uses: merge sort
+
+How do you know?: On big lists it always outpreformed the two other searches, except for the already sorted one.
+
+sort3 uses: selection sort
+
+How do you know?: The runtime of the sorted list is equivalent to the reversed, so the best and the worst case runtime is the same.
